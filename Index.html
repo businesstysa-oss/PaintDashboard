@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Paint Denver — Project HQ</title>
+<title>Arden Finishes — Project HQ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -26,778 +25,774 @@
     --blue: #3a7bd5;
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-font-family: ‘DM Sans’, sans-serif;
-background: var(–bg);
-color: var(–dark);
-min-height: 100vh;
-}
-
-/* SIDEBAR — desktop only */
-.sidebar {
-position: fixed;
-left: 0; top: 0; bottom: 0;
-width: 220px;
-background: var(–dark);
-display: flex;
-flex-direction: column;
-z-index: 100;
-padding: 0;
-}
-
-.sidebar-logo {
-padding: 28px 24px 20px;
-border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.sidebar-logo .brand {
-font-family: ‘Playfair Display’, serif;
-font-size: 16px;
-font-weight: 700;
-color: var(–white);
-line-height: 1.2;
-letter-spacing: 0.01em;
-}
-
-.sidebar-logo .tagline {
-font-size: 11px;
-color: var(–teal-light);
-margin-top: 4px;
-font-style: italic;
-letter-spacing: 0.03em;
-}
-
-.sidebar-logo .launch-badge {
-margin-top: 10px;
-display: inline-flex;
-align-items: center;
-gap: 5px;
-background: rgba(42,157,138,0.2);
-border: 1px solid rgba(42,157,138,0.4);
-border-radius: 20px;
-padding: 3px 10px;
-font-size: 10px;
-color: var(–teal-light);
-font-weight: 500;
-}
-
-.sidebar-logo .launch-badge .dot {
-width: 5px; height: 5px;
-background: var(–teal-light);
-border-radius: 50%;
-animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.3; }
-}
-
-.nav {
-flex: 1;
-padding: 16px 0;
-overflow-y: auto;
-}
-
-.nav-section {
-padding: 6px 16px 4px;
-font-size: 9px;
-text-transform: uppercase;
-letter-spacing: 0.12em;
-color: rgba(255,255,255,0.3);
-font-weight: 600;
-margin-top: 8px;
-}
-
-.nav-item {
-display: flex;
-align-items: center;
-gap: 10px;
-padding: 9px 16px;
-cursor: pointer;
-transition: all 0.15s;
-border-left: 3px solid transparent;
-font-size: 13px;
-color: rgba(255,255,255,0.55);
-font-weight: 400;
-}
-
-.nav-item:hover {
-color: var(–white);
-background: rgba(255,255,255,0.05);
-}
-
-.nav-item.active {
-color: var(–white);
-background: rgba(42,157,138,0.15);
-border-left-color: var(–teal-light);
-font-weight: 500;
-}
-
-.nav-item .icon { font-size: 15px; width: 20px; text-align: center; }
-
-.nav-progress {
-padding: 16px;
-border-top: 1px solid rgba(255,255,255,0.08);
-}
-
-.nav-progress .label {
-font-size: 10px;
-color: rgba(255,255,255,0.4);
-margin-bottom: 6px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-}
-
-.progress-bar {
-height: 4px;
-background: rgba(255,255,255,0.1);
-border-radius: 2px;
-overflow: hidden;
-}
-
-.progress-fill {
-height: 100%;
-background: linear-gradient(90deg, var(–teal), var(–teal-light));
-border-radius: 2px;
-transition: width 0.5s ease;
-}
-
-.progress-text {
-font-size: 11px;
-color: var(–teal-light);
-margin-top: 5px;
-font-weight: 500;
-}
-
-/* MOBILE BOTTOM NAV */
-.bottom-nav {
-display: none;
-position: fixed;
-bottom: 0; left: 0; right: 0;
-background: var(–dark);
-border-top: 1px solid rgba(255,255,255,0.1);
-z-index: 200;
-padding: 0;
-padding-bottom: env(safe-area-inset-bottom);
-}
-
-.bottom-nav-scroll {
-display: flex;
-overflow-x: auto;
--webkit-overflow-scrolling: touch;
-scrollbar-width: none;
-padding: 0 4px;
-}
-
-.bottom-nav-scroll::-webkit-scrollbar { display: none; }
-
-.bottom-nav-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 3px;
-padding: 10px 14px;
-cursor: pointer;
-flex-shrink: 0;
-color: rgba(255,255,255,0.45);
-transition: color 0.15s;
-min-width: 60px;
-}
-
-.bottom-nav-item.active { color: var(–teal-light); }
-.bottom-nav-item .bn-icon { font-size: 18px; line-height: 1; }
-.bottom-nav-item .bn-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-
-/* MOBILE HEADER */
-.mobile-header {
-display: none;
-background: var(–dark);
-padding: 16px 16px 12px;
-position: sticky;
-top: 0;
-z-index: 100;
-}
-
-.mobile-header-top {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 8px;
-}
-
-.mobile-brand {
-font-family: ‘Playfair Display’, serif;
-font-size: 15px;
-font-weight: 700;
-color: var(–white);
-}
-
-.mobile-days {
-font-size: 11px;
-color: var(–teal-light);
-background: rgba(42,157,138,0.2);
-padding: 3px 10px;
-border-radius: 20px;
-font-weight: 500;
-}
-
-.mobile-progress-bar {
-height: 3px;
-background: rgba(255,255,255,0.1);
-border-radius: 2px;
-overflow: hidden;
-}
-
-.mobile-progress-fill {
-height: 100%;
-background: linear-gradient(90deg, var(–teal), var(–teal-light));
-border-radius: 2px;
-transition: width 0.5s ease;
-}
-
-/* MAIN */
-.main {
-margin-left: 220px;
-min-height: 100vh;
-}
-
-.topbar {
-background: var(–white);
-border-bottom: 1px solid var(–border);
-padding: 14px 32px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-position: sticky;
-top: 0;
-z-index: 50;
-}
-
-.page-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 20px;
-font-weight: 600;
-color: var(–dark);
-}
-
-.topbar-actions {
-display: flex;
-gap: 10px;
-align-items: center;
-}
-
-.days-badge {
-font-size: 12px;
-color: var(–mid);
-background: var(–teal-pale);
-padding: 5px 12px;
-border-radius: 20px;
-font-weight: 500;
-}
-
-/* CONTENT */
-.content {
-padding: 28px 32px;
-}
-
-/* MOBILE LAYOUT */
-@media (max-width: 768px) {
-.sidebar { display: none; }
-.bottom-nav { display: block; }
-.mobile-header { display: block; }
-.topbar { display: none; }
-
-```
-.main {
-  margin-left: 0;
-  padding-bottom: calc(70px + env(safe-area-inset-bottom));
-}
-
-.content {
-  padding: 16px 14px;
-}
-
-.grid-2, .grid-3 {
-  grid-template-columns: 1fr !important;
-}
-
-.overview-stats {
-  grid-template-columns: 1fr 1fr !important;
-}
-
-.partners-row {
-  grid-template-columns: 1fr !important;
-}
-
-.timeline-row {
-  grid-template-columns: 1fr !important;
-  gap: 6px;
-  padding: 12px 0;
-}
-
-.timeline-row.header { display: none; }
-
-.timeline-row > div:nth-child(3),
-.timeline-row > div:nth-child(4) { display: none; }
-
-.checklist-item {
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.checklist-item:hover {
-  margin: 0 -14px;
-  padding-left: 14px;
-  padding-right: 14px;
-}
-
-.name-card {
-  flex-wrap: wrap;
-}
-
-.risk-row {
-  grid-template-columns: 1fr !important;
-  gap: 6px;
-}
-
-.risk-row.header { display: none; }
-
-.section-header h2 { font-size: 20px; }
-
-.stat-value { font-size: 22px; }
-
-.card { padding: 16px; }
-```
-
-}
-
-.section { display: none; }
-.section.active { display: block; }
-
-/* CARDS */
-.card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 22px;
-margin-bottom: 16px;
-}
-
-.card-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 16px;
-}
-
-.card-title {
-font-family: ‘Playfair Display’, serif;
-font-size: 16px;
-font-weight: 600;
-color: var(–dark);
-}
-
-.card-subtitle {
-font-size: 12px;
-color: var(–muted);
-margin-top: 2px;
-}
-
-/* GRID */
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-
-/* STAT CARDS */
-.stat-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 20px;
-}
-
-.stat-label {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–muted);
-font-weight: 600;
-margin-bottom: 8px;
-}
-
-.stat-value {
-font-family: ‘Playfair Display’, serif;
-font-size: 28px;
-font-weight: 700;
-color: var(–dark);
-line-height: 1;
-}
-
-.stat-sub {
-font-size: 12px;
-color: var(–muted);
-margin-top: 6px;
-}
-
-.stat-accent { color: var(–teal); }
-
-/* CHECKLIST */
-.checklist-item {
-display: flex;
-align-items: flex-start;
-gap: 12px;
-padding: 10px 0;
-border-bottom: 1px solid var(–border);
-cursor: pointer;
-transition: background 0.1s;
-}
-
-.checklist-item:last-child { border-bottom: none; }
-
-.checklist-item:hover { background: var(–teal-pale); margin: 0 -22px; padding-left: 22px; padding-right: 22px; border-radius: 6px; }
-
-.check-box {
-width: 18px; height: 18px;
-border: 2px solid var(–border);
-border-radius: 4px;
-flex-shrink: 0;
-margin-top: 1px;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.15s;
-font-size: 11px;
-color: transparent;
-}
-
-.checklist-item.done .check-box {
-background: var(–teal);
-border-color: var(–teal);
-color: white;
-}
-
-.checklist-item.done .check-text { text-decoration: line-through; color: var(–muted); }
-
-.check-text {
-font-size: 13px;
-color: var(–dark);
-line-height: 1.4;
-flex: 1;
-}
-
-.check-owner {
-font-size: 10px;
-background: var(–bg);
-border: 1px solid var(–border);
-padding: 2px 8px;
-border-radius: 10px;
-color: var(–mid);
-font-weight: 500;
-white-space: nowrap;
-}
-
-.check-priority {
-font-size: 10px;
-padding: 2px 8px;
-border-radius: 10px;
-font-weight: 600;
-white-space: nowrap;
-}
-
-.priority-critical { background: #fef2f2; color: var(–red); border: 1px solid #fecaca; }
-.priority-high { background: #fff7ed; color: var(–amber); border: 1px solid #fed7aa; }
-.priority-medium { background: #f0fdf4; color: var(–green); border: 1px solid #bbf7d0; }
-
-/* NAME TRACKER */
-.name-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 10px;
-padding: 16px 18px;
-margin-bottom: 10px;
-display: flex;
-align-items: center;
-gap: 14px;
-transition: all 0.15s;
-}
-
-.name-card:hover { border-color: var(–teal-mid); box-shadow: 0 2px 8px rgba(26,123,107,0.08); }
-
-.name-rank {
-font-family: ‘DM Mono’, monospace;
-font-size: 11px;
-color: var(–muted);
-width: 20px;
-text-align: center;
-}
-
-.name-text {
-font-family: ‘Playfair Display’, serif;
-font-size: 17px;
-font-weight: 600;
-color: var(–dark);
-flex: 1;
-}
-
-.name-notes {
-font-size: 12px;
-color: var(–muted);
-flex: 2;
-}
-
-.status-badge {
-font-size: 11px;
-padding: 3px 10px;
-border-radius: 20px;
-font-weight: 600;
-white-space: nowrap;
-}
-
-.status-clear { background: #f0fdf4; color: var(–green); border: 1px solid #bbf7d0; }
-.status-conflict { background: #fef2f2; color: var(–red); border: 1px solid #fecaca; }
-.status-check { background: #fff7ed; color: var(–amber); border: 1px solid #fed7aa; }
-.status-top { background: var(–teal-pale); color: var(–teal); border: 1px solid var(–teal-mid); }
-
-/* TIMELINE */
-.timeline-row {
-display: grid;
-grid-template-columns: 100px 1fr 100px 100px 110px;
-gap: 12px;
-align-items: center;
-padding: 10px 0;
-border-bottom: 1px solid var(–border);
-font-size: 13px;
-}
-
-.timeline-row:last-child { border-bottom: none; }
-.timeline-row.header {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–muted);
-font-weight: 600;
-padding-bottom: 8px;
-}
-
-.timeline-phase {
-font-size: 11px;
-padding: 3px 8px;
-border-radius: 6px;
-font-weight: 600;
-text-align: center;
-}
-
-.phase-1 { background: #eff6ff; color: #2563eb; }
-.phase-2 { background: #faf5ff; color: #7c3aed; }
-.phase-3 { background: #fff7ed; color: var(–amber); }
-.phase-launch { background: var(–teal-pale); color: var(–teal); }
-
-/* RISK TABLE */
-.risk-row {
-display: grid;
-grid-template-columns: 1fr 80px 1fr;
-gap: 16px;
-padding: 12px 0;
-border-bottom: 1px solid var(–border);
-font-size: 13px;
-align-items: start;
-}
-
-.risk-row:last-child { border-bottom: none; }
-.risk-row.header {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–muted);
-font-weight: 600;
-padding-bottom: 8px;
-}
-
-.likelihood-high { color: var(–red); font-weight: 600; }
-.likelihood-med { color: var(–amber); font-weight: 600; }
-.likelihood-low { color: var(–green); font-weight: 600; }
-
-/* FINANCIAL */
-.fin-metric {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 10px 0;
-border-bottom: 1px solid var(–border);
-font-size: 13px;
-}
-
-.fin-metric:last-child { border-bottom: none; }
-.fin-label { color: var(–mid); }
-.fin-value { font-weight: 600; color: var(–dark); font-family: ‘DM Mono’, monospace; font-size: 14px; }
-.fin-accent { color: var(–teal); }
-
-/* MARKETING */
-.mkt-item {
-display: flex;
-gap: 14px;
-padding: 12px 0;
-border-bottom: 1px solid var(–border);
-align-items: flex-start;
-}
-
-.mkt-item:last-child { border-bottom: none; }
-
-.mkt-priority {
-width: 22px; height: 22px;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 10px;
-font-weight: 700;
-flex-shrink: 0;
-margin-top: 1px;
-}
-
-.p1 { background: var(–teal); color: white; }
-.p2 { background: var(–gold); color: white; }
-.p3 { background: var(–muted); color: white; }
-
-.mkt-content { flex: 1; }
-.mkt-title { font-size: 13px; font-weight: 600; color: var(–dark); margin-bottom: 2px; }
-.mkt-desc { font-size: 12px; color: var(–muted); line-height: 1.4; }
-
-/* CALLOUT */
-.callout {
-background: var(–teal-pale);
-border-left: 3px solid var(–teal);
-border-radius: 0 8px 8px 0;
-padding: 12px 16px;
-font-size: 13px;
-color: var(–dark);
-margin-bottom: 16px;
-line-height: 1.5;
-}
-
-.callout strong { color: var(–teal); }
-
-/* SECTION HEADER */
-.section-header {
-margin-bottom: 20px;
-}
-
-.section-header h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: 24px;
-font-weight: 700;
-color: var(–dark);
-}
-
-.section-header p {
-font-size: 13px;
-color: var(–muted);
-margin-top: 4px;
-}
-
-/* OVERVIEW SPECIFIC */
-.overview-stats {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 14px;
-margin-bottom: 20px;
-}
-
-.partners-row {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px;
-margin-bottom: 20px;
-}
-
-.partner-card {
-background: var(–white);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 20px;
-}
-
-.partner-name {
-font-family: ‘Playfair Display’, serif;
-font-size: 18px;
-font-weight: 600;
-color: var(–dark);
-margin-bottom: 4px;
-}
-
-.partner-role {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-color: var(–teal);
-font-weight: 600;
-margin-bottom: 12px;
-}
-
-.partner-skills {
-display: flex;
-flex-wrap: wrap;
-gap: 6px;
-}
-
-.skill-tag {
-font-size: 11px;
-padding: 3px 9px;
-background: var(–bg);
-border: 1px solid var(–border);
-border-radius: 20px;
-color: var(–mid);
-}
-
-/* SCROLLBAR */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(–border); border-radius: 3px; }
-
-/* INPUT STYLES */
-.add-btn {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-size: 12px;
-font-weight: 600;
-color: var(–teal);
-cursor: pointer;
-padding: 6px 12px;
-border: 1px dashed var(–teal-mid);
-border-radius: 8px;
-background: transparent;
-transition: all 0.15s;
-font-family: ‘DM Sans’, sans-serif;
-margin-top: 10px;
-}
-
-.add-btn:hover { background: var(–teal-pale); }
-
-.section-tag {
-display: inline-block;
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-font-weight: 700;
-color: var(–teal);
-background: var(–teal-pale);
-padding: 3px 10px;
-border-radius: 20px;
-margin-bottom: 12px;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR — desktop only */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 220px;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    padding: 0;
+  }
+
+  .sidebar-logo {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-logo .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .sidebar-logo .tagline {
+    font-size: 11px;
+    color: var(--teal-light);
+    margin-top: 4px;
+    font-style: italic;
+    letter-spacing: 0.03em;
+  }
+
+  .sidebar-logo .launch-badge {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(42,157,138,0.2);
+    border: 1px solid rgba(42,157,138,0.4);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 10px;
+    color: var(--teal-light);
+    font-weight: 500;
+  }
+
+  .sidebar-logo .launch-badge .dot {
+    width: 5px; height: 5px;
+    background: var(--teal-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .nav {
+    flex: 1;
+    padding: 16px 0;
+    overflow-y: auto;
+  }
+
+  .nav-section {
+    padding: 6px 16px 4px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+
+  .nav-item:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .nav-item.active {
+    color: var(--white);
+    background: rgba(42,157,138,0.15);
+    border-left-color: var(--teal-light);
+    font-weight: 500;
+  }
+
+  .nav-item .icon { font-size: 15px; width: 20px; text-align: center; }
+
+  .nav-progress {
+    padding: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-progress .label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  .progress-text {
+    font-size: 11px;
+    color: var(--teal-light);
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  /* MOBILE BOTTOM NAV */
+  .bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    z-index: 200;
+    padding: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .bottom-nav-scroll {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0 4px;
+  }
+
+  .bottom-nav-scroll::-webkit-scrollbar { display: none; }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 10px 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: rgba(255,255,255,0.45);
+    transition: color 0.15s;
+    min-width: 60px;
+  }
+
+  .bottom-nav-item.active { color: var(--teal-light); }
+  .bottom-nav-item .bn-icon { font-size: 18px; line-height: 1; }
+  .bottom-nav-item .bn-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+
+  /* MOBILE HEADER */
+  .mobile-header {
+    display: none;
+    background: var(--dark);
+    padding: 16px 16px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .mobile-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .mobile-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .mobile-days {
+    font-size: 11px;
+    color: var(--teal-light);
+    background: rgba(42,157,138,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .mobile-progress-bar {
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .mobile-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  /* MAIN */
+  .main {
+    margin-left: 220px;
+    min-height: 100vh;
+  }
+
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .topbar-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .days-badge {
+    font-size: 12px;
+    color: var(--mid);
+    background: var(--teal-pale);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 28px 32px;
+  }
+
+  /* MOBILE LAYOUT */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .bottom-nav { display: block; }
+    .mobile-header { display: block; }
+    .topbar { display: none; }
+
+    .main {
+      margin-left: 0;
+      padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    }
+
+    .content {
+      padding: 16px 14px;
+    }
+
+    .grid-2, .grid-3 {
+      grid-template-columns: 1fr !important;
+    }
+
+    .overview-stats {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    .partners-row {
+      grid-template-columns: 1fr !important;
+    }
+
+    .timeline-row {
+      grid-template-columns: 1fr !important;
+      gap: 6px;
+      padding: 12px 0;
+    }
+
+    .timeline-row.header { display: none; }
+
+    .timeline-row > div:nth-child(3),
+    .timeline-row > div:nth-child(4) { display: none; }
+
+    .checklist-item {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .checklist-item:hover {
+      margin: 0 -14px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+
+    .name-card {
+      flex-wrap: wrap;
+    }
+
+    .risk-row {
+      grid-template-columns: 1fr !important;
+      gap: 6px;
+    }
+
+    .risk-row.header { display: none; }
+
+    .section-header h2 { font-size: 20px; }
+
+    .stat-value { font-size: 22px; }
+
+    .card { padding: 16px; }
+  }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* STAT CARDS */
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .stat-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .stat-accent { color: var(--teal); }
+
+  /* CHECKLIST */
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .checklist-item:last-child { border-bottom: none; }
+
+  .checklist-item:hover { background: var(--teal-pale); margin: 0 -22px; padding-left: 22px; padding-right: 22px; border-radius: 6px; }
+
+  .check-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-size: 11px;
+    color: transparent;
+  }
+
+  .checklist-item.done .check-box {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  .checklist-item.done .check-text { text-decoration: line-through; color: var(--muted); }
+
+  .check-text {
+    font-size: 13px;
+    color: var(--dark);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .check-owner {
+    font-size: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: var(--mid);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .check-priority {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .priority-critical { background: #fef2f2; color: var(--red); border: 1px solid #fecaca; }
+  .priority-high { background: #fff7ed; color: var(--amber); border: 1px solid #fed7aa; }
+  .priority-medium { background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
+  .priority-low { background: #f1f5f9; color: var(--muted); border: 1px solid var(--border); }
+
+  /* NAME TRACKER */
+  .name-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.15s;
+  }
+
+  .name-card:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(26,123,107,0.08); }
+
+  .name-rank {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    width: 20px;
+    text-align: center;
+  }
+
+  .name-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--dark);
+    flex: 1;
+  }
+
+  .name-notes {
+    font-size: 12px;
+    color: var(--muted);
+    flex: 2;
+  }
+
+  .status-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .status-clear { background: #f0fdf4; color: var(--green); border: 1px solid #bbf7d0; }
+  .status-conflict { background: #fef2f2; color: var(--red); border: 1px solid #fecaca; }
+  .status-check { background: #fff7ed; color: var(--amber); border: 1px solid #fed7aa; }
+  .status-top { background: var(--teal-pale); color: var(--teal); border: 1px solid var(--teal-mid); }
+
+  /* TIMELINE */
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 100px 110px;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .timeline-row:last-child { border-bottom: none; }
+  .timeline-row.header {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+  }
+
+  .timeline-phase {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .phase-1 { background: #eff6ff; color: #2563eb; }
+  .phase-2 { background: #faf5ff; color: #7c3aed; }
+  .phase-3 { background: #fff7ed; color: var(--amber); }
+  .phase-launch { background: var(--teal-pale); color: var(--teal); }
+
+  /* RISK TABLE */
+  .risk-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    align-items: start;
+  }
+
+  .risk-row:last-child { border-bottom: none; }
+  .risk-row.header {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    padding-bottom: 8px;
+  }
+
+  .likelihood-high { color: var(--red); font-weight: 600; }
+  .likelihood-med { color: var(--amber); font-weight: 600; }
+  .likelihood-low { color: var(--green); font-weight: 600; }
+
+  /* FINANCIAL */
+  .fin-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .fin-metric:last-child { border-bottom: none; }
+  .fin-label { color: var(--mid); }
+  .fin-value { font-weight: 600; color: var(--dark); font-family: 'DM Mono', monospace; font-size: 14px; }
+  .fin-accent { color: var(--teal); }
+
+  /* MARKETING */
+  .mkt-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .mkt-item:last-child { border-bottom: none; }
+
+  .mkt-priority {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .p1 { background: var(--teal); color: white; }
+  .p2 { background: var(--gold); color: white; }
+  .p3 { background: var(--muted); color: white; }
+
+  .mkt-content { flex: 1; }
+  .mkt-title { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+  .mkt-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--teal-pale);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--dark);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .callout strong { color: var(--teal); }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .section-header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* OVERVIEW SPECIFIC */
+  .overview-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .partners-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .partner-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .partner-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .partner-role {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .partner-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--mid);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* INPUT STYLES */
+  .add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--teal);
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px dashed var(--teal-mid);
+    border-radius: 8px;
+    background: transparent;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 10px;
+  }
+
+  .add-btn:hover { background: var(--teal-pale); }
+
+  .section-tag {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-pale);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
 </style>
-
 </head>
 <body>
 
 <!-- MOBILE HEADER -->
-
 <div class="mobile-header">
   <div class="mobile-header-top">
-    <div class="mobile-brand">Fresh Paint Denver</div>
+    <div class="mobile-brand">Arden Finishes</div>
     <div class="mobile-days" id="mobileDaysLeft">...</div>
   </div>
   <div class="mobile-progress-bar">
@@ -806,7 +801,6 @@ margin-bottom: 12px;
 </div>
 
 <!-- MOBILE BOTTOM NAV -->
-
 <div class="bottom-nav">
   <div class="bottom-nav-scroll">
     <div class="bottom-nav-item active" onclick="showSection('overview', null, this)" id="bn-overview">
@@ -835,9 +829,9 @@ margin-bottom: 12px;
 
 <div class="sidebar">
   <div class="sidebar-logo">
-    <div class="brand">Fresh Paint<br>Denver</div>
+    <div class="brand">Arden<br>Finishes</div>
     <div class="tagline">The West, Refreshed.</div>
-    <div class="launch-badge"><span class="dot"></span> Target: May 1</div>
+    <div class="launch-badge"><span class="dot"></span> Launch: Apr 15, 2026</div>
   </div>
   <nav class="nav">
     <div class="nav-section">Overview</div>
@@ -884,352 +878,418 @@ margin-bottom: 12px;
 
   <div class="content">
 
-```
-<!-- OVERVIEW -->
-<div class="section active" id="section-overview">
-  <div class="section-header">
-    <h2>Project Overview</h2>
-    <p>Everything you need to launch Fresh Paint Denver by May 1.</p>
-  </div>
+    <!-- OVERVIEW -->
+    <div class="section active" id="section-overview">
+      <div class="section-header">
+        <h2>Project Overview</h2>
+        <p>Everything you need to launch Arden Finishes by April 15, 2026.</p>
+      </div>
 
-  <div class="overview-stats">
-    <div class="stat-card">
-      <div class="stat-label">Revenue Target Y1</div>
-      <div class="stat-value stat-accent">$250K</div>
-      <div class="stat-sub">up to $500K stretch</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Gross Margin Target</div>
-      <div class="stat-value">40%</div>
-      <div class="stat-sub">Josh's proven benchmark</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Jobs in First 60 Days</div>
-      <div class="stat-value">10</div>
-      <div class="stat-sub">min. to validate launch</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-label">Tasks Complete</div>
-      <div class="stat-value stat-accent" id="overviewTaskCount">0/0</div>
-      <div class="stat-sub">across all checklists</div>
-    </div>
-  </div>
+      <div class="overview-stats">
+        <div class="stat-card">
+          <div class="stat-label">Revenue Target Y1</div>
+          <div class="stat-value stat-accent">$250K</div>
+          <div class="stat-sub">up to $500K stretch</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Gross Margin Target</div>
+          <div class="stat-value">40%</div>
+          <div class="stat-sub">Josh's proven benchmark</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Jobs in First 60 Days</div>
+          <div class="stat-value">10</div>
+          <div class="stat-sub">min. to validate launch</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Tasks Complete</div>
+          <div class="stat-value stat-accent" id="overviewTaskCount">0/0</div>
+          <div class="stat-sub">across all checklists</div>
+        </div>
+      </div>
 
-  <div class="partners-row">
-    <div class="partner-card">
-      <div class="partner-name">Josh</div>
-      <div class="partner-role">President · Field Operations</div>
-      <div class="partner-skills">
-        <span class="skill-tag">Estimating</span>
-        <span class="skill-tag">Project Mgmt</span>
-        <span class="skill-tag">Sales</span>
-        <span class="skill-tag">Quality Control</span>
-        <span class="skill-tag">Subcontractor Mgmt</span>
-        <span class="skill-tag">Realtor Relations</span>
+      <div class="partners-row">
+        <div class="partner-card">
+          <div class="partner-name">Josh</div>
+          <div class="partner-role">President · Field Operations</div>
+          <div class="partner-skills">
+            <span class="skill-tag">Estimating</span>
+            <span class="skill-tag">Project Mgmt</span>
+            <span class="skill-tag">Sales</span>
+            <span class="skill-tag">Quality Control</span>
+            <span class="skill-tag">Subcontractor Mgmt</span>
+            <span class="skill-tag">Realtor Relations</span>
+          </div>
+        </div>
+        <div class="partner-card">
+          <div class="partner-name">Tysa</div>
+          <div class="partner-role">CFO · CMO · AI Strategy</div>
+          <div class="partner-skills">
+            <span class="skill-tag">Financial Backing</span>
+            <span class="skill-tag">Accounting</span>
+            <span class="skill-tag">Marketing</span>
+            <span class="skill-tag">AI Tooling</span>
+            <span class="skill-tag">LLC Formation</span>
+            <span class="skill-tag">Tax Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Name locked — Arden Finishes LLC ✓</strong> LLC formed, ArdenFinishes.com secured. Next priorities: Josh reviews Singletrack non-compete, finalize ownership split and Operating Agreement, obtain General Liability insurance, and begin realtor outreach.
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">Critical Next Actions</div>
+            <div class="card-subtitle">Must-do before anything else</div>
+          </div>
+        </div>
+        <div id="criticalTasks"></div>
       </div>
     </div>
-    <div class="partner-card">
-      <div class="partner-name">Tysa</div>
-      <div class="partner-role">CFO · CMO · AI Strategy</div>
-      <div class="partner-skills">
-        <span class="skill-tag">Financial Backing</span>
-        <span class="skill-tag">Accounting</span>
-        <span class="skill-tag">Marketing</span>
-        <span class="skill-tag">AI Tooling</span>
-        <span class="skill-tag">LLC Formation</span>
-        <span class="skill-tag">Tax Strategy</span>
+
+    <!-- NAME TRACKER -->
+    <div class="section" id="section-names">
+      <div class="section-header">
+        <h2>Name Tracker</h2>
+        <p>Name selected, domain secured, LLC formed.</p>
+      </div>
+
+      <div class="callout">
+        <strong>✓ Decision made: Arden Finishes</strong> LLC registered with Colorado SOS. ArdenFinishes.com domain purchased. No conflicts found in Denver market, Colorado, or USPTO painting class.
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">✅ Selected Name</div>
+        </div>
+        <div class="name-card" style="border-color: var(--teal); background: var(--teal-pale);">
+          <div class="name-rank">★</div>
+          <div>
+            <div class="name-text">Arden Finishes</div>
+            <div style="font-size:12px; color: var(--mid); margin-top:3px;">Warm, ownable, design-forward. No painting company conflict in Denver or Colorado. Works equally well for realtors and renovation clients. "Finishes" is trade-credible and signals quality of craft.</div>
+          </div>
+          <div class="status-badge status-clear">✓ Locked In</div>
+        </div>
+
+        <div class="card-header" style="margin-top:20px;">
+          <div class="card-title">Availability — All Clear</div>
+        </div>
+
+        <div class="name-card">
+          <div class="name-rank">✓</div>
+          <div style="flex:1">
+            <div class="name-text" style="font-size:14px;">Colorado SOS</div>
+            <div style="font-size:12px; color: var(--mid); margin-top:3px;">Arden Finishes LLC registered. Formation complete.</div>
+          </div>
+          <div class="status-badge status-clear">✓ Done</div>
+        </div>
+
+        <div class="name-card">
+          <div class="name-rank">✓</div>
+          <div style="flex:1">
+            <div class="name-text" style="font-size:14px;">Domain</div>
+            <div style="font-size:12px; color: var(--mid); margin-top:3px;">ArdenFinishes.com purchased and secured.</div>
+          </div>
+          <div class="status-badge status-clear">✓ Done</div>
+        </div>
+
+        <div class="name-card">
+          <div class="name-rank">→</div>
+          <div style="flex:1">
+            <div class="name-text" style="font-size:14px;">USPTO Trademark</div>
+            <div style="font-size:12px; color: var(--mid); margin-top:3px;">No conflicts found in initial search. File application in Class 37 (painting services) when ready — not required at launch but recommended in Year 1.</div>
+          </div>
+          <div class="status-badge status-check">⚠ File When Ready</div>
+        </div>
+
+        <div class="card-header" style="margin-top:20px;">
+          <div class="card-title">Names Considered — Eliminated</div>
+        </div>
+
+        <div class="name-card" style="opacity:0.6;">
+          <div class="name-rank">—</div>
+          <div style="flex:1">
+            <div class="name-text" style="text-decoration:line-through; color:var(--muted)">Fresh Paint Denver</div>
+            <div style="font-size:12px; color: var(--muted); margin-top:3px;">Conflicts with "Fresh Paint Colorado" — same state, brand confusion risk.</div>
+          </div>
+          <div class="status-badge status-conflict">✗ Conflict</div>
+        </div>
+
+        <div class="name-card" style="opacity:0.6;">
+          <div class="name-rank">—</div>
+          <div style="flex:1">
+            <div class="name-text" style="text-decoration:line-through; color:var(--muted)">True Finish Co. / True Coat Denver</div>
+            <div style="font-size:12px; color: var(--muted); margin-top:3px;">True Finish Painting LLC (Nebraska), TrueCoat Painters (Denver). Direct conflicts.</div>
+          </div>
+          <div class="status-badge status-conflict">✗ Conflict</div>
+        </div>
+
+        <div class="name-card" style="opacity:0.6;">
+          <div class="name-rank">—</div>
+          <div style="flex:1">
+            <div class="name-text" style="text-decoration:line-through; color:var(--muted)">Elevation Paint Co. / Front Range Finishes / Peak Paint</div>
+            <div style="font-size:12px; color: var(--muted); margin-top:3px;">All active Denver/Colorado operators found. Eliminated early.</div>
+          </div>
+          <div class="status-badge status-conflict">✗ Conflict</div>
+        </div>
+
+        <div class="name-card" style="opacity:0.6;">
+          <div class="name-rank">—</div>
+          <div style="flex:1">
+            <div class="name-text" style="text-decoration:line-through; color:var(--muted)">Render Denver / Bluebell Co. / Noble Coat</div>
+            <div style="font-size:12px; color: var(--muted); margin-top:3px;">Cleared but not chosen. Strong runners-up — Arden Finishes preferred.</div>
+          </div>
+          <div class="status-badge status-check">Passed Over</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="callout">
-    <strong>Top priority this week:</strong> Check Josh's Singletrack non-compete / non-solicitation agreement before any public moves. This is the #1 legal risk. Also: confirm business name availability on Colorado SOS + USPTO before investing in branding.
-  </div>
+    <!-- FORMATION -->
+    <div class="section" id="section-formation">
+      <div class="section-header">
+        <h2>Business Formation</h2>
+        <p>Legal and structural setup required before launch.</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Legal Setup</div>
+              <div class="card-subtitle">Owner: Tysa</div>
+            </div>
+          </div>
+          <div id="formationLegal"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Operating Agreement</div>
+              <div class="card-subtitle">Owner: Both</div>
+            </div>
+          </div>
+          <div id="formationOps"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Insurance & Compliance</div>
+        </div>
+        <div id="formationInsurance"></div>
+      </div>
 
-  <div class="card">
-    <div class="card-header">
-      <div>
-        <div class="card-title">Critical Next Actions</div>
-        <div class="card-subtitle">Must-do before anything else</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🏠 HouseCall Pro Setup</div>
+              <div class="card-subtitle">Leaning toward HouseCall Pro — confirm vs. Jobber</div>
+            </div>
+            <div class="status-badge status-check">⚠ Evaluate</div>
+          </div>
+          <div class="callout" style="margin-bottom:14px; font-size:12px;">
+            <strong>Open question:</strong> HouseCall Pro as all-in-one (scheduling + estimating + invoicing + CRM) vs. adding a separate CRM layer. Decide before first job so intake is clean from day one.
+          </div>
+          <div id="formationHCP"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">📄 Registered Agent Review</div>
+              <div class="card-subtitle">Owner: Tysa — audit what you're paying for</div>
+            </div>
+          </div>
+          <div id="formationRegAgent"></div>
+        </div>
       </div>
     </div>
-    <div id="criticalTasks"></div>
-  </div>
-</div>
 
-<!-- NAME TRACKER -->
-<div class="section" id="section-names">
-  <div class="section-header">
-    <h2>Name Tracker</h2>
-    <p>All names considered, their availability status, and our recommendation.</p>
-  </div>
-
-  <div class="callout">
-    <strong>Naming criteria:</strong> Must clear Colorado SOS + USPTO + .com domain. Must work for both realtors and renovation clients. Must stand out in a crowded Denver market.
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">🏆 Top Contender</div>
-    </div>
-    <div class="name-card" style="border-color: var(--teal); background: var(--teal-pale);">
-      <div class="name-rank">★</div>
-      <div>
-        <div class="name-text">Render Denver</div>
-        <div style="font-size:12px; color: var(--mid); margin-top:3px;">Abstract, fully ownable. No painting company in Denver uses it. Works for realtors and renovation clients. Design-forward without being inaccessible.</div>
+    <!-- TIMELINE -->
+    <div class="section" id="section-timeline">
+      <div class="section-header">
+        <h2>Launch Timeline</h2>
+        <p>Week-by-week to May 1 launch.</p>
       </div>
-      <div class="status-badge status-top">✓ Recommended</div>
-    </div>
-
-    <div class="card-header" style="margin-top:20px;">
-      <div class="card-title">Other Strong Contenders</div>
-    </div>
-
-    <div class="name-card">
-      <div class="name-rank">2</div>
-      <div style="flex:1">
-        <div class="name-text">The Finish Co.</div>
-        <div style="font-size:12px; color: var(--mid); margin-top:3px;">Authoritative, trade-credible, works for both audiences. "The" adds brand gravity.</div>
+      <div class="card">
+        <div class="timeline-row header">
+          <div>Phase</div>
+          <div>Task</div>
+          <div>Owner</div>
+          <div>Week</div>
+          <div>Status</div>
+        </div>
+        <div id="timelineRows"></div>
       </div>
-      <div class="status-badge status-check">⚠ Check Availability</div>
     </div>
 
-    <div class="name-card">
-      <div class="name-rank">3</div>
-      <div style="flex:1">
-        <div class="name-text">Highline Co.</div>
-        <div style="font-size:12px; color: var(--mid); margin-top:3px;">Denver's Highline Canal reference. Premium feel, local without being generic.</div>
+    <!-- MARKETING -->
+    <div class="section" id="section-marketing">
+      <div class="section-header">
+        <h2>Marketing Strategy</h2>
+        <p>AI-first, realtor-led, before/after content driven.</p>
       </div>
-      <div class="status-badge status-check">⚠ Check Availability</div>
-    </div>
 
-    <div class="name-card">
-      <div class="name-rank">4</div>
-      <div style="flex:1">
-        <div class="name-text">Forma</div>
-        <div style="font-size:12px; color: var(--mid); margin-top:3px;">Best option if renovation/design market becomes primary. Short, ownable, design-world feel.</div>
+      <div class="callout">
+        <strong>Primary customer Y1:</strong> Realtors prepping homes for sale. They don't Google painters — they ask their network. Your brand, proposals, and Josh's personal outreach matter more than SEO clicks early on.
       </div>
-      <div class="status-badge status-check">⚠ Check Availability</div>
-    </div>
 
-    <div class="card-header" style="margin-top:20px;">
-      <div class="card-title">Eliminated — Conflicts Found</div>
-    </div>
-
-    <div class="name-card" style="opacity:0.6;">
-      <div class="name-rank">—</div>
-      <div style="flex:1">
-        <div class="name-text" style="text-decoration:line-through; color:var(--muted)">Fresh Paint Denver</div>
-        <div style="font-size:12px; color: var(--muted); margin-top:3px;">Conflicts with "Fresh Paint Colorado" — same state, brand confusion risk.</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Channel Priority</div>
+          </div>
+          <div id="marketingChannels"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">AI-First Stack</div>
+            <div class="card-subtitle">Owner: Tysa</div>
+          </div>
+          <div id="aiStack"></div>
+        </div>
       </div>
-      <div class="status-badge status-conflict">✗ Conflict</div>
-    </div>
 
-    <div class="name-card" style="opacity:0.6;">
-      <div class="name-rank">—</div>
-      <div style="flex:1">
-        <div class="name-text" style="text-decoration:line-through; color:var(--muted)">True Finish Co.</div>
-        <div style="font-size:12px; color: var(--muted); margin-top:3px;">True Finish Painting LLC operating in Nebraska. truefinishpainting.com taken.</div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Marketing Launch Checklist</div>
+        </div>
+        <div id="marketingChecklist"></div>
       </div>
-      <div class="status-badge status-conflict">✗ Conflict</div>
-    </div>
 
-    <div class="name-card" style="opacity:0.6;">
-      <div class="name-rank">—</div>
-      <div style="flex:1">
-        <div class="name-text" style="text-decoration:line-through; color:var(--muted)">True Coat Denver</div>
-        <div style="font-size:12px; color: var(--muted); margin-top:3px;">TrueCoat Painters already operating in Denver. Direct conflict.</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🌐 Website — Build or Outsource</div>
+              <div class="card-subtitle">ArdenFinishes.com — MVP needed by Wk 3–5</div>
+            </div>
+            <div class="status-badge status-check">⚠ Decide First</div>
+          </div>
+          <div class="callout" style="margin-bottom:14px; font-size:12px;">
+            <strong>Evaluate both paths:</strong> DIY on Squarespace / Webflow / Framer (~$20–40/mo, faster) vs. outsource to freelancer ($1,500–4,000, higher quality). Must be live by April 15.
+          </div>
+          <div id="marketingWebsite"></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">📱 Social Media</div>
+              <div class="card-subtitle">All handles secured ✅ — now decide what to use</div>
+            </div>
+            <div class="status-badge status-clear">✓ Handles Secured</div>
+          </div>
+          <div class="callout" style="margin-bottom:14px; font-size:12px;">
+            <strong>✓ Secured:</strong> Instagram, Facebook, Twitter/X, TikTok. Instagram is the clear priority for before/after content. Park the rest — don't try to run all four.
+          </div>
+          <div id="marketingSocial"></div>
+        </div>
       </div>
-      <div class="status-badge status-conflict">✗ Conflict</div>
     </div>
 
-    <div class="card-header" style="margin-top:20px;">
-      <div class="card-title">Availability Checklist for Render Denver</div>
-    </div>
-    <div id="nameChecklist"></div>
-  </div>
-</div>
+    <!-- FINANCIAL -->
+    <div class="section" id="section-financial">
+      <div class="section-header">
+        <h2>Financial Model</h2>
+        <p>Year 1 targets and tax strategy.</p>
+      </div>
 
-<!-- FORMATION -->
-<div class="section" id="section-formation">
-  <div class="section-header">
-    <h2>Business Formation</h2>
-    <p>Legal and structural setup required before launch.</p>
-  </div>
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Legal Setup</div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Year 1 Targets</div>
+          </div>
+          <div class="fin-metric"><span class="fin-label">Revenue (conservative)</span><span class="fin-value fin-accent">$250,000</span></div>
+          <div class="fin-metric"><span class="fin-label">Revenue (stretch)</span><span class="fin-value">$500,000</span></div>
+          <div class="fin-metric"><span class="fin-label">Gross Margin</span><span class="fin-value">40–50%</span></div>
+          <div class="fin-metric"><span class="fin-label">Net Profit Margin</span><span class="fin-value">15–25%</span></div>
+          <div class="fin-metric"><span class="fin-label">Jobs in First 60 Days</span><span class="fin-value fin-accent">10+</span></div>
+          <div class="fin-metric"><span class="fin-label">Avg Job Size</span><span class="fin-value">$3K–$6K</span></div>
+          <div class="fin-metric"><span class="fin-label">Direct Cost Target</span><span class="fin-value">60% labor+materials</span></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Pricing by Service</div>
+          </div>
+          <div class="fin-metric"><span class="fin-label">Interior (per room)</span><span class="fin-value">$400–$900</span></div>
+          <div class="fin-metric"><span class="fin-label">Exterior (whole home)</span><span class="fin-value">$3,500–$9,000</span></div>
+          <div class="fin-metric"><span class="fin-label">Cabinet Refinishing</span><span class="fin-value">$2,500–$6,000</span></div>
+          <div class="fin-metric"><span class="fin-label">Premium Finishes</span><span class="fin-value">$800–$2,500/rm</span></div>
+          <div style="margin-top:12px; padding:10px; background:var(--teal-pale); border-radius:8px; font-size:12px; color:var(--teal);">
+            <strong>Positioning:</strong> Never compete on price. Bundle design + quality + reliability. Position as premium — not the cheapest.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Tax Strategy Checklist</div>
           <div class="card-subtitle">Owner: Tysa</div>
         </div>
+        <div id="taxChecklist"></div>
       </div>
-      <div id="formationLegal"></div>
+
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">📊 QuickBooks Setup &amp; Training</div>
+            <div class="card-subtitle">Owner: Tysa — set up before first invoice goes out</div>
+          </div>
+        </div>
+        <div id="financialQuickbooks"></div>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-header">
-        <div>
-          <div class="card-title">Operating Agreement</div>
-          <div class="card-subtitle">Owner: Both</div>
+
+    <!-- RISKS -->
+    <div class="section" id="section-risks">
+      <div class="section-header">
+        <h2>Risk Register</h2>
+        <p>Known risks and mitigation plans.</p>
+      </div>
+      <div class="card">
+        <div class="risk-row header">
+          <div>Risk</div>
+          <div>Likelihood</div>
+          <div>Mitigation</div>
+        </div>
+        <div class="risk-row">
+          <div><strong style="color:var(--red)">⚡ Non-compete at Singletrack</strong><br><span style="font-size:12px;color:var(--muted)">Josh may have signed agreements limiting his ability to operate independently.</span></div>
+          <div class="likelihood-med">Medium</div>
+          <div>Josh reviews all signed agreements <em>immediately</em>. Consult employment attorney before any public launch steps. This is the #1 priority.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Name conflict</strong><br><span style="font-size:12px;color:var(--muted)">Chosen name conflicts with existing brand.</span></div>
+          <div class="likelihood-med">Medium</div>
+          <div>Run Colorado SOS + USPTO + domain check before any branding spend. Render Denver currently appears clear — verify formally.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Inconsistent sub quality</strong><br><span style="font-size:12px;color:var(--muted)">Contractor work doesn't meet the premium brand standard.</span></div>
+          <div class="likelihood-high">High</div>
+          <div>Josh personally inspects every job in Year 1. Build tiered bench of 3–5 vetted subs. Only top performers get repeat work.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Slow early lead flow</strong><br><span style="font-size:12px;color:var(--muted)">Not enough jobs in first 60 days to sustain momentum.</span></div>
+          <div class="likelihood-med">Medium</div>
+          <div>Josh leverages Singletrack network (carefully, per any non-compete). Target 10 realtor partners in Week 1. Aim for 3 confirmed jobs before launch day.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Cash flow gaps</strong><br><span style="font-size:12px;color:var(--muted)">Revenue lags expenses in early months.</span></div>
+          <div class="likelihood-med">Medium</div>
+          <div>Tysa's W-2 income provides runway. Require 50% deposit on all jobs over $2,000. Invoice immediately on completion.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Seasonality</strong><br><span style="font-size:12px;color:var(--muted)">Denver winters slow exterior work significantly.</span></div>
+          <div class="likelihood-high">High</div>
+          <div>Plan ahead. Use slow months for interior work, cabinets, marketing, and prospecting. Build summer pipeline aggressively in spring.</div>
+        </div>
+        <div class="risk-row">
+          <div><strong>Partnership misalignment</strong><br><span style="font-size:12px;color:var(--muted)">Unclear roles, profit expectations, or exit terms cause friction.</span></div>
+          <div class="likelihood-low">Low</div>
+          <div>Sign Operating Agreement before launch. Define roles, profit split, and buyout terms in writing. Don't skip this even if it feels uncomfortable.</div>
         </div>
       </div>
-      <div id="formationOps"></div>
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">Insurance & Compliance</div>
-    </div>
-    <div id="formationInsurance"></div>
-  </div>
-</div>
-
-<!-- TIMELINE -->
-<div class="section" id="section-timeline">
-  <div class="section-header">
-    <h2>Launch Timeline</h2>
-    <p>Week-by-week to May 1 launch.</p>
-  </div>
-  <div class="card">
-    <div class="timeline-row header">
-      <div>Phase</div>
-      <div>Task</div>
-      <div>Owner</div>
-      <div>Week</div>
-      <div>Status</div>
-    </div>
-    <div id="timelineRows"></div>
-  </div>
-</div>
-
-<!-- MARKETING -->
-<div class="section" id="section-marketing">
-  <div class="section-header">
-    <h2>Marketing Strategy</h2>
-    <p>AI-first, realtor-led, before/after content driven.</p>
-  </div>
-
-  <div class="callout">
-    <strong>Primary customer Y1:</strong> Realtors prepping homes for sale. They don't Google painters — they ask their network. Your brand, proposals, and Josh's personal outreach matter more than SEO clicks early on.
-  </div>
-
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Channel Priority</div>
-      </div>
-      <div id="marketingChannels"></div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">AI-First Stack</div>
-        <div class="card-subtitle">Owner: Tysa</div>
-      </div>
-      <div id="aiStack"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">Marketing Launch Checklist</div>
-    </div>
-    <div id="marketingChecklist"></div>
-  </div>
-</div>
-
-<!-- FINANCIAL -->
-<div class="section" id="section-financial">
-  <div class="section-header">
-    <h2>Financial Model</h2>
-    <p>Year 1 targets and tax strategy.</p>
-  </div>
-
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Year 1 Targets</div>
-      </div>
-      <div class="fin-metric"><span class="fin-label">Revenue (conservative)</span><span class="fin-value fin-accent">$250,000</span></div>
-      <div class="fin-metric"><span class="fin-label">Revenue (stretch)</span><span class="fin-value">$500,000</span></div>
-      <div class="fin-metric"><span class="fin-label">Gross Margin</span><span class="fin-value">40–50%</span></div>
-      <div class="fin-metric"><span class="fin-label">Net Profit Margin</span><span class="fin-value">15–25%</span></div>
-      <div class="fin-metric"><span class="fin-label">Jobs in First 60 Days</span><span class="fin-value fin-accent">10+</span></div>
-      <div class="fin-metric"><span class="fin-label">Avg Job Size</span><span class="fin-value">$3K–$6K</span></div>
-      <div class="fin-metric"><span class="fin-label">Direct Cost Target</span><span class="fin-value">60% labor+materials</span></div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">Pricing by Service</div>
-      </div>
-      <div class="fin-metric"><span class="fin-label">Interior (per room)</span><span class="fin-value">$400–$900</span></div>
-      <div class="fin-metric"><span class="fin-label">Exterior (whole home)</span><span class="fin-value">$3,500–$9,000</span></div>
-      <div class="fin-metric"><span class="fin-label">Cabinet Refinishing</span><span class="fin-value">$2,500–$6,000</span></div>
-      <div class="fin-metric"><span class="fin-label">Premium Finishes</span><span class="fin-value">$800–$2,500/rm</span></div>
-      <div style="margin-top:12px; padding:10px; background:var(--teal-pale); border-radius:8px; font-size:12px; color:var(--teal);">
-        <strong>Positioning:</strong> Never compete on price. Bundle design + quality + reliability. Position as premium — not the cheapest.
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">Tax Strategy Checklist</div>
-      <div class="card-subtitle">Owner: Tysa</div>
-    </div>
-    <div id="taxChecklist"></div>
-  </div>
-</div>
-
-<!-- RISKS -->
-<div class="section" id="section-risks">
-  <div class="section-header">
-    <h2>Risk Register</h2>
-    <p>Known risks and mitigation plans.</p>
-  </div>
-  <div class="card">
-    <div class="risk-row header">
-      <div>Risk</div>
-      <div>Likelihood</div>
-      <div>Mitigation</div>
-    </div>
-    <div class="risk-row">
-      <div><strong style="color:var(--red)">⚡ Non-compete at Singletrack</strong><br><span style="font-size:12px;color:var(--muted)">Josh may have signed agreements limiting his ability to operate independently.</span></div>
-      <div class="likelihood-med">Medium</div>
-      <div>Josh reviews all signed agreements <em>immediately</em>. Consult employment attorney before any public launch steps. This is the #1 priority.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Name conflict</strong><br><span style="font-size:12px;color:var(--muted)">Chosen name conflicts with existing brand.</span></div>
-      <div class="likelihood-med">Medium</div>
-      <div>Run Colorado SOS + USPTO + domain check before any branding spend. Render Denver currently appears clear — verify formally.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Inconsistent sub quality</strong><br><span style="font-size:12px;color:var(--muted)">Contractor work doesn't meet the premium brand standard.</span></div>
-      <div class="likelihood-high">High</div>
-      <div>Josh personally inspects every job in Year 1. Build tiered bench of 3–5 vetted subs. Only top performers get repeat work.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Slow early lead flow</strong><br><span style="font-size:12px;color:var(--muted)">Not enough jobs in first 60 days to sustain momentum.</span></div>
-      <div class="likelihood-med">Medium</div>
-      <div>Josh leverages Singletrack network (carefully, per any non-compete). Target 10 realtor partners in Week 1. Aim for 3 confirmed jobs before launch day.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Cash flow gaps</strong><br><span style="font-size:12px;color:var(--muted)">Revenue lags expenses in early months.</span></div>
-      <div class="likelihood-med">Medium</div>
-      <div>Tysa's W-2 income provides runway. Require 50% deposit on all jobs over $2,000. Invoice immediately on completion.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Seasonality</strong><br><span style="font-size:12px;color:var(--muted)">Denver winters slow exterior work significantly.</span></div>
-      <div class="likelihood-high">High</div>
-      <div>Plan ahead. Use slow months for interior work, cabinets, marketing, and prospecting. Build summer pipeline aggressively in spring.</div>
-    </div>
-    <div class="risk-row">
-      <div><strong>Partnership misalignment</strong><br><span style="font-size:12px;color:var(--muted)">Unclear roles, profit expectations, or exit terms cause friction.</span></div>
-      <div class="likelihood-low">Low</div>
-      <div>Sign Operating Agreement before launch. Define roles, profit split, and buyout terms in writing. Don't skip this even if it feels uncomfortable.</div>
-    </div>
-  </div>
-</div>
-```
 
   </div>
 </div>
@@ -1237,18 +1297,13 @@ margin-bottom: 12px;
 <script>
 // ---- DATA ----
 const checklistData = {
-  nameChecklist: [
-    { text: "Search Colorado SOS business name database", owner: "Tysa", priority: "critical" },
-    { text: "Search USPTO trademark at tmsearch.uspto.gov", owner: "Tysa", priority: "critical" },
-    { text: "Check renderdenv.com / renderdenver.com domain availability", owner: "Tysa", priority: "critical" },
-    { text: "Google 'Render Denver' to check organic conflicts", owner: "Tysa", priority: "high" },
-  ],
   formationLegal: [
-    { text: "Register LLC with Colorado Secretary of State", owner: "Tysa", priority: "critical" },
+    { text: "Register LLC with Colorado Secretary of State — Arden Finishes LLC", owner: "Tysa", priority: "critical", done: true },
+    { text: "Purchase domain — ArdenFinishes.com secured", owner: "Tysa", priority: "critical", done: true },
     { text: "Obtain EIN from IRS.gov (free, 10 min)", owner: "Tysa", priority: "critical" },
     { text: "Open business checking account (Relay or Mercury recommended)", owner: "Tysa", priority: "high" },
     { text: "Get business credit card for all expenses", owner: "Tysa", priority: "high" },
-    { text: "Purchase domain name", owner: "Tysa", priority: "high" },
+    { text: "Set up Google Workspace email (josh@ / tysa@ @ardenfinishes.com)", owner: "Tysa", priority: "high" },
   ],
   formationOps: [
     { text: "Josh reviews Singletrack non-compete/non-solicitation", owner: "Josh", priority: "critical" },
@@ -1263,11 +1318,11 @@ const checklistData = {
     { text: "Set up Workers Comp (once hiring employees)", owner: "Josh", priority: "medium" },
   ],
   marketingChecklist: [
-    { text: "Set up Google Business Profile", owner: "Tysa", priority: "critical" },
-    { text: "Build MVP website with contact form + service pages", owner: "Tysa", priority: "critical" },
-    { text: "Order yard signs with logo", owner: "Josh", priority: "high" },
+    { text: "Set up Google Business Profile as 'Arden Finishes'", owner: "Tysa", priority: "critical" },
+    { text: "Build MVP website on ArdenFinishes.com with contact form + service pages", owner: "Tysa", priority: "critical" },
+    { text: "Order yard signs with Arden Finishes logo", owner: "Josh", priority: "high" },
     { text: "Set up website chatbot for lead capture", owner: "Tysa", priority: "high" },
-    { text: "Create Instagram/social account with before/after content plan", owner: "Tysa", priority: "high" },
+    { text: "Create Instagram account @ardenfinishes with before/after content plan", owner: "Tysa", priority: "high" },
     { text: "Identify 10 target realtors for Josh personal outreach", owner: "Josh", priority: "high" },
     { text: "Build referral program ($100–$200 credit) after first 5 jobs", owner: "Both", priority: "medium" },
   ],
@@ -1279,28 +1334,82 @@ const checklistData = {
     { text: "Review S-Corp election in Q4 Year 1", owner: "Tysa", priority: "medium" },
     { text: "Evaluate cost segregation via STR investment synergy", owner: "Tysa", priority: "medium" },
   ],
+  financialQuickbooks: [
+    { text: "Choose plan: Simple Start ($17.50/mo) for solo bookkeeping or Essentials ($32.50/mo) for bill tracking + 3 users", owner: "Tysa", priority: "high" },
+    { text: "Connect business bank account and credit card for auto-import of transactions", owner: "Tysa", priority: "high" },
+    { text: "Set up chart of accounts: Labor, Materials, Insurance, Marketing, Software, Mileage, Sub Payments", owner: "Tysa", priority: "high" },
+    { text: "Create first invoice template with Arden Finishes branding", owner: "Tysa", priority: "high" },
+    { text: "Complete QuickBooks onboarding training (in-app walkthrough or YouTube — ~2 hrs)", owner: "Tysa", priority: "medium" },
+    { text: "Set up mileage tracking via QuickBooks mobile app or MileIQ", owner: "Tysa", priority: "medium" },
+    { text: "Establish monthly bookkeeping cadence: reconcile, categorize, review P&L", owner: "Tysa", priority: "medium" },
+    { text: "Connect QuickBooks to HouseCall Pro if integration is available, or set up manual export workflow", owner: "Tysa", priority: "medium" },
+  ],
+  formationHCP: [
+    { text: "Start HouseCall Pro free trial — test estimating, scheduling, invoicing, customer history, and job photos", owner: "Both", priority: "critical" },
+    { text: "Compare Jobber as alternative (similar price, strong for sub-based crews) — decide within 2 weeks", owner: "Both", priority: "high" },
+    { text: "Decide: HouseCall Pro as all-in-one vs. HouseCall Pro + separate CRM (e.g. HubSpot Free)", owner: "Both", priority: "critical" },
+    { text: "Set up chosen system with Arden Finishes branding on all client-facing docs", owner: "Tysa", priority: "high" },
+    { text: "Build estimate templates for Interior, Exterior, Cabinets, and Premium Finishes", owner: "Josh", priority: "high" },
+    { text: "Configure lead-to-invoice workflow: intake → estimate → job → invoice → review request", owner: "Tysa", priority: "high" },
+    { text: "Train Josh on mobile app: job photos, client notes, time tracking in the field", owner: "Josh", priority: "high" },
+    { text: "Set up automated review request trigger after job completion", owner: "Tysa", priority: "medium" },
+    { text: "Connect to QuickBooks for invoicing sync", owner: "Tysa", priority: "medium" },
+  ],
+  formationRegAgent: [
+    { text: "Identify current registered agent on file — check Colorado SOS portal", owner: "Tysa", priority: "high" },
+    { text: "Review what services are bundled: compliance reminders, document forwarding, annual report filing", owner: "Tysa", priority: "high" },
+    { text: "Evaluate: keep current agent, switch to Northwest Registered Agent ($49/yr), or self-serve as your own agent", owner: "Tysa", priority: "medium" },
+    { text: "Confirm Colorado annual report filing deadline and cost (~$10, due on LLC anniversary date)", owner: "Tysa", priority: "medium" },
+    { text: "Cancel or downgrade any bundled services you don't need (unnecessary legal packages, etc.)", owner: "Tysa", priority: "medium" },
+  ],
+  marketingWebsite: [
+    { text: "Decide: DIY vs. outsource — set budget ceiling and hard go-live deadline (must be live by Apr 15)", owner: "Tysa", priority: "critical" },
+    { text: "If DIY: evaluate Squarespace (easiest), Webflow (most design control), or Framer (AI-assisted, fast)", owner: "Tysa", priority: "high" },
+    { text: "If outsourcing: get 2–3 quotes from Denver freelancers or Contra/Upwork ($1,500–$4,000 range)", owner: "Tysa", priority: "high" },
+    { text: "Write or AI-generate core copy: Homepage, About, Services (4 types), Contact", owner: "Tysa", priority: "high" },
+    { text: "Add contact form connected to email + HouseCall Pro or CRM for lead capture", owner: "Tysa", priority: "high" },
+    { text: "Set up basic SEO: page titles, meta descriptions, location keywords (Denver painting company)", owner: "Tysa", priority: "medium" },
+    { text: "Add before/after photo gallery section — populate after first 3 jobs", owner: "Tysa", priority: "medium" },
+    { text: "Add Google Analytics and Google Search Console", owner: "Tysa", priority: "medium" },
+  ],
+  marketingSocial: [
+    { text: "Confirm all 4 handles are secured: Instagram, Facebook, Twitter/X, TikTok as Arden Finishes ✅", owner: "Tysa", priority: "high" },
+    { text: "Set Instagram as primary active platform — before/after content drives remodeling and realtor clients", owner: "Tysa", priority: "high" },
+    { text: "Set up Instagram profile: bio, logo, ArdenFinishes.com link, contact button", owner: "Tysa", priority: "high" },
+    { text: "Create Facebook Business Page (required for Meta ads later even if not posting actively)", owner: "Tysa", priority: "medium" },
+    { text: "Park Twitter/X and TikTok — brand name squatted, no active posting required in Year 1", owner: "Tysa", priority: "medium" },
+    { text: "Plan first 9 Instagram posts: brand intro, service types, before/after template, team intro", owner: "Tysa", priority: "medium" },
+    { text: "Connect Instagram to Facebook Business Page for unified management in Meta Business Suite", owner: "Tysa", priority: "low" },
+  ],
 };
 
 const criticalTasksData = [
   { text: "Josh reviews Singletrack non-compete — before any public steps", owner: "Josh", priority: "critical" },
-  { text: "Run name availability check on Render Denver (SOS + USPTO + domain)", owner: "Tysa", priority: "critical" },
   { text: "Agree on ownership split between partners", owner: "Both", priority: "critical" },
-  { text: "Josh begins outreach to potential subcontractors", owner: "Josh", priority: "high" },
-  { text: "Josh contacts first 3 realtor targets from Singletrack network", owner: "Josh", priority: "critical" },
+  { text: "Draft and sign Operating Agreement (profit split, roles, exit, buyout)", owner: "Both", priority: "critical" },
+  { text: "Obtain General Liability Insurance (required before any job)", owner: "Josh", priority: "critical" },
+  { text: "Josh lines up 3+ subcontractors", owner: "Josh", priority: "high" },
+  { text: "Josh contacts first 3 realtor targets from network", owner: "Josh", priority: "critical" },
+  { text: "Set up Google Workspace email at ArdenFinishes.com", owner: "Tysa", priority: "high" },
 ];
 
 const timelineData = [
-  { phase: "Week 1–2", task: "Confirm name, register LLC, get EIN, open bank account", owner: "Tysa", week: "Wk 1–2", phaseClass: "phase-1" },
-  { phase: "Week 1–2", task: "Josh reviews non-compete. Line up 3+ subcontractors", owner: "Josh", week: "Wk 1–2", phaseClass: "phase-1" },
-  { phase: "Week 1–2", task: "Begin realtor outreach — leverage existing network", owner: "Josh", week: "Wk 1–2", phaseClass: "phase-1" },
-  { phase: "Week 3–4", task: "General liability insurance obtained", owner: "Josh", week: "Wk 3–4", phaseClass: "phase-2" },
-  { phase: "Week 3–4", task: "Operating Agreement drafted and signed", owner: "Both", week: "Wk 3–4", phaseClass: "phase-2" },
-  { phase: "Week 3–4", task: "Define pricing model for all services", owner: "Tysa", week: "Wk 3–4", phaseClass: "phase-2" },
-  { phase: "Week 3–4", task: "Build MVP website, set up Google Business Profile", owner: "Tysa", week: "Wk 3–4", phaseClass: "phase-2" },
-  { phase: "Week 5–6", task: "Order yard signs and branded materials", owner: "Josh", week: "Wk 5–6", phaseClass: "phase-3" },
-  { phase: "Week 5–6", task: "Marketing launch: Google listing live, social content", owner: "Tysa", week: "Wk 5–6", phaseClass: "phase-3" },
-  { phase: "Week 5–6", task: "First 3 jobs confirmed and on the calendar", owner: "Josh", week: "Wk 5–6", phaseClass: "phase-3" },
-  { phase: "May 1+", task: "Official launch — 10 jobs target in first 60 days", owner: "Both", week: "May 1", phaseClass: "phase-launch" },
+  { phase: "✓ Done", task: "Arden Finishes LLC registered with Colorado SOS", owner: "Tysa", week: "Complete", phaseClass: "phase-launch" },
+  { phase: "✓ Done", task: "ArdenFinishes.com domain purchased", owner: "Tysa", week: "Complete", phaseClass: "phase-launch" },
+  { phase: "Now", task: "Josh reviews Singletrack non-compete agreement", owner: "Josh", week: "ASAP", phaseClass: "phase-1" },
+  { phase: "Now", task: "Agree on ownership split, draft Operating Agreement", owner: "Both", week: "ASAP", phaseClass: "phase-1" },
+  { phase: "Now", task: "Obtain EIN from IRS.gov", owner: "Tysa", week: "ASAP", phaseClass: "phase-1" },
+  { phase: "Now", task: "Open business bank account + credit card", owner: "Tysa", week: "ASAP", phaseClass: "phase-1" },
+  { phase: "Wk 2–3", task: "General liability insurance obtained", owner: "Josh", week: "Wk 2–3", phaseClass: "phase-2" },
+  { phase: "Wk 2–3", task: "Set up Google Workspace email at ArdenFinishes.com", owner: "Tysa", week: "Wk 2–3", phaseClass: "phase-2" },
+  { phase: "Wk 2–3", task: "Josh lines up 3+ vetted subcontractors", owner: "Josh", week: "Wk 2–3", phaseClass: "phase-2" },
+  { phase: "Wk 2–3", task: "Begin realtor outreach — first 3 targets contacted", owner: "Josh", week: "Wk 2–3", phaseClass: "phase-2" },
+  { phase: "Wk 3–5", task: "Define pricing model for all services", owner: "Tysa", week: "Wk 3–5", phaseClass: "phase-3" },
+  { phase: "Wk 3–5", task: "Build MVP website on ArdenFinishes.com + contact form", owner: "Tysa", week: "Wk 3–5", phaseClass: "phase-3" },
+  { phase: "Wk 3–5", task: "Set up Google Business Profile as Arden Finishes", owner: "Tysa", week: "Wk 3–5", phaseClass: "phase-3" },
+  { phase: "Wk 5–6", task: "Order yard signs and branded materials with Arden Finishes branding", owner: "Josh", week: "Wk 5–6", phaseClass: "phase-3" },
+  { phase: "Wk 5–6", task: "First 3 jobs confirmed and on the calendar", owner: "Josh", week: "Wk 5–6", phaseClass: "phase-3" },
+  { phase: "Apr 15", task: "Official launch — 10 jobs target in first 60 days", owner: "Both", week: "Apr 15", phaseClass: "phase-launch" },
 ];
 
 const marketingChannels = [
@@ -1500,7 +1609,7 @@ function showSection(id, navEl, mobileNavEl) {
 
 // ---- DAYS COUNTDOWN ----
 function updateCountdown() {
-  const launch = new Date('2025-05-01');
+  const launch = new Date('2026-04-15');
   const now = new Date();
   const diff = Math.ceil((launch - now) / (1000 * 60 * 60 * 24));
   let text;
@@ -1520,6 +1629,5 @@ renderAll();
 updateProgress();
 updateCountdown();
 </script>
-
 </body>
 </html>
